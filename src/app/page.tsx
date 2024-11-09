@@ -11,24 +11,6 @@ export default function Page()
 
     // Handle video file selection
     const handleVideoUpload = (e: ChangeEvent<HTMLInputElement>) =>
-<<<<<<< HEAD
-        {
-            const file = e.target.files?.[0] || null;
-            
-            // Check file size limit 50MB
-            if (file && file.size > 50 * 1024 * 1024)
-            { 
-                alert('Please upload a video smaller than 50MB.');
-                return;
-            }
-            
-            setVideoFile(file);
-            setUploadStatus('');
-        };
-
-    // Next: Upload the video file into Azure Storage
-    const handleUploadToAzure = async() =>
-=======
     {
         const file = e.target.files?.[0] || null;
         
@@ -44,7 +26,6 @@ export default function Page()
     };
 
     const handleUploadToAzure = async () =>
->>>>>>> 7f74ee0 (Update basic concepts)
     {
         if (!videoFile)
         {
@@ -54,17 +35,6 @@ export default function Page()
 
         try
         {
-<<<<<<< HEAD
-
-        }
-        catch (error)
-        {
-            
-        }
-    }
-    
-}
-=======
             setUploadStatus('Preparing file for upload...');
             const fileName = videoFile.name;
             const fileContentType = videoFile.type;
@@ -159,4 +129,3 @@ export default function Page()
             </div>
         );
 }
->>>>>>> 7f74ee0 (Update basic concepts)

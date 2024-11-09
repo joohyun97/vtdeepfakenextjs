@@ -3,10 +3,6 @@ import { BlobServiceClient } from '@azure/storage-blob';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse)
 {
-<<<<<<< HEAD
-    
-}
-=======
     if (req.method !== 'POST')
     {
         res.setHeader('Allow', ['POST']);
@@ -36,4 +32,3 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(500).json({ error: 'Failed to upload to Azure Blob Storage' });
     }
 }
->>>>>>> 7f74ee0 (Update basic concepts)
