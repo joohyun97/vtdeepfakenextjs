@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { BlobServiceClient } from "@azure/storage-blob";
+import { DefaultAzureCredential } from '@azure/identity';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse)
 {
@@ -21,9 +22,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try
     {
         // Initialize Blob Service Client
+        const credential = new DefaultAzureCredential(); // Updated 
         const blobServiceClient = new BlobServiceClient(
-        `https://${process.env.NEXT_PUBLIC_AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net?${process.env.NEXT_PUBLIC_AZURE_STORAGE_SAS_TOKEN}`
-        );
+        `https://${process.env.NEXT_PUBLIC_AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net`, credential);
         const containerClient = blobServiceClient.getContainerClient(process.env.NEXT_PUBLIC_AZURE_STORAGE_ACCOUNT_NAME || '');
     
         // Extract the blob name from the URL
